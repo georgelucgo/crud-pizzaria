@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+    /* Definição de fontes importadas do Google Fonts e Font Awesome */
+    @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+
+    /* Reset de estilos padrão do navegador e configurações globais */
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            text-decoration: none;
+            list-style: none;
+        }
+
+   /* Estilos para o cabeçalho da página */
+   .header {
+            background-color: rgb(231, 38, 38);
+            width: 100%;
+            padding: 10px 10px;
+        }
+
+        /* Estilos para a parte superior do conteúdo */
+        .head {
+            background-color: rgb(231, 38, 38);
+            width: 100%;
+            padding: 20px 30px;
+            margin-bottom: 0px;
+            border: 0.1px solid rgb(190, 34, 34);
+        }
+
+        /* Estilos para a barra de navegação */
+        .navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Estilos para o logotipo */
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        /* Estilos para a lista de links de navegação */
+        .navigation ul {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        /* Estilos para os links de navegação */
+        .navigation ul li a {
+            color: #fff;
+            font-size: 2rem;
+        }
+
+        /* Estilos para os links de navegação quando o mouse passa por cima */
+        .navigation ul li a:hover {
+            border-bottom: 3px solid rgb(190, 34, 34);
+        }
+
+        /* Estilos para imagens dentro da barra de navegação */
+        .navigation img {
+            width: 3rem;
+        }
+
+        /* Estilos para o container principal */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+        }
+
+
+
+    /* Estilos para o título e botões no centro da imagem */
+    .title-and-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+      z-index: 2;
+    }
+
+    /* Estilos para o título principal */
+    .title-and-button h1 {
+      font-size: 200px;
+      color: #fff;
+      align-items: center;
+      margin-bottom: 300px;
+      text-shadow: 4px 4px 0px #000;
+    }
+
+    /* Estilos para os botões */
+    .button,
+    .button2 {
+      display: flex;
+      width: 340px;
+      background-color: rgb(231, 38, 38);
+      border: 2px solid rgb(174, 12, 12);
+      border-radius: 16px;
+      font-size: 32px;
+      color: #FFFFFF;
+      padding: 22px 42px;
+      text-align: center;
+      transition-duration: 0.4s;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer;
+      margin-bottom: 8px;
+      box-shadow: 0px 2px 0px #000;
+    }
+
+    /* Estilos para o botão de reserva */
+    .btn-fixed-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Definindo variáveis CSS personalizadas */
+    :root {
+      --hero-gap: 60px;
+    }
+
+    /* Estilos globais para o corpo da página */
+    body {
+      font-family: "Lora", serif;
+      background-color: rgb(242, 246, 250);
+    }
+
+    /* Estilos para cabeçalhos h1 */
+    h1 {
+      font-size: calc(0.5rem + 8vmin);
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    /* Estilos para cabeçalhos h2 */
+    .main-content h2 {
+      font-size: calc(0.8rem + 4vmin);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.2;
+    }
+
+    /* Estilos para parágrafos */
+    p {
+      font-size: calc(0.8rem + 1.25vmin);
+      line-height: 1.65;
+    }
+
+    /* Estilos para a legenda */
+    .caption {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      color: white;
+      z-index: 2;
+      font-size: 0.6rem;
+    }
+
+    /* Estilos para o contêiner de parallax */
+    .parallax-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Estilos para imagens dentro do contêiner de parallax */
+    .parallax-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Estilos para o conteúdo parallax do herói */
+    .hero-parallax-content {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      margin-bottom: 1%;
+    }
+
+    /* Estilos para imagens dentro do conteúdo parallax do herói */
+    .hero-parallax-content img {
+      width: 100%;
+      height: 0%;
+      margin-bottom: 16px;
+    }
+
+    /* Estilos para o título do herói */
+    .hero__title {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 20px;
+      text-align: center;
+      font-family: 'Lora', serif;
+    }
+
+    /* Estilos para o texto do título do herói */
+    .hero__title h1 {
+      font-size: 100px;
+      color: #fff;
+      margin-bottom: 5px;
+      text-shadow: 2px 2px 0px #000
+    }
+
+    /* Estilos para o conteúdo principal */
+    .main-content {
+      position: relative;
+      margin: 0 auto;
+      border-radius: 10px;
+      padding: var(--hero-gap) 2rem;
+      max-width: 1100px;
+      border: 2px solid rgb(235, 235, 235);
+      background-color: #fff;
+      text-align: justify;
+    }
+
+    /* Estilos para o contêiner de parallax da foto */
+    .parallax-photo {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+    }
+
+    .table-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #c4c4c4;
+            border: 1px solid #000000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin: 10px 20px;
+            cursor: pointer; /* Adicione um cursor apontando para indicar que é clicável */
+        }
+        .table-icon.selected {
+          border-color: blue;
+        }
+        .table-container {
+          margin-top: 8px;
+          align-self: center;
+          justify-content: center;
+        }
+
+      .tabela-reservas {
+        display: flex;
+        width: 100%;
+        height: 200%;
+        justify-content: space-between;
+      }
+
+    /* Estilos para o pano de fundo do modal de fundo */
+    dialog::backdrop {
+      background-color: rgb(0 0 0 / .5);
+    }
+
+    /* Estilos para o modal (janela de diálogo) */
+    dialog {
+      margin: 0 auto;
+      border: none;
+      border-radius: .5rem;
+      box-shadow: 0 0 0 5px rgb(0 0 0 / .5);
+      width: 100%;
+      z-index: 2;
+    }
+
+    /* Estilos para a janela de reserva de mesa */
+    #janela {
+      width: 30%;
+      height: 60%;
+      margin: 100px auto 0 auto;
+    }
+
+    #janelaSucesso{
+      width: 30%;
+      height: 60%;
+      margin: 100px auto 0 auto;
+    }
+
+    #janelaFormulario{
+      width: 30%;
+      height: 60%;
+      margin: 100px auto 0 auto;
+    }
+    /* Estilos para o contêiner de reserva */
+    .cont {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    /* Estilos para o cabeçalho do contêiner de reserva de mesa */
+    .hcontainer {
+      display: flex;
+      background-color: rgb(255, 0, 0);
+      padding: 8px;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Estilos para o texto do cabeçalho do contêiner de reserva de mesa */
+    .hcontainer h1 {
+      font-size: 30px;
+    }
+
+    /* Estilos para o botão de reserva de mesa */
+    .botao-reservar {
+      display: flex;
+      font-size: 10px;
+      margin: 8px;
+      margin-top: 100px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Estilos para o botão de reserva de mesa no modal */
+    .dialog-button {
+      background-color: rgb(231, 38, 38);
+      border: 2px solid rgb(174, 12, 12);
+      border-radius: 16px;
+      font-size: 24px;
+      color: #FFFFFF;
+      padding: 12px 42px;
+      text-align: center;
+      transition-duration: 0.4s;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    /* Estilos para a mesa selecionada */
+    .selected {
+      border: 3px solid #0051ff;
+    }
+
+    /* Estilos para o formulário no modal */
+    .formulario {
+      background-color: #fff;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      width: 80%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilos para o título do formulário */
+    .formulario h1 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Estilos para rótulos de campos do formulário */
+    .formulario label {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    /* Estilos para campos de texto no formulário */
+    .formulario input[type="text"],
+    .formulario input[type="tel"],
+    .formulario input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    /* Estilos para o botão Enviar no formulário */
+    .formulario button {
+      background-color: #e72626;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    /* Estilos para o botão Enviar no formulário quando passa o mouse por cima */
+    .formulario button:hover {
+      background-color: #b71e1e;
+    }
+
+    /* Estilos para o modal de sucesso após a reserva */
+    .sucesso {
+      background-color: #fff;
+      border: 2px solid #000000;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #mesaReservada {
+      font-size: 30px;
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .sucesso button {
+      background-color: #e72626;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    /* Estilos para o ícone de sucesso no modal de sucesso */
+    #icone {
+      display: flex;
+      margin-bottom: 10%; 
+      justify-content: center;
+      color: #a0a0a0;
+      align-items: center;
+    }
+
+    .container-avaliacao {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+
+      border-radius: 2px;
+      margin-top: 20px;
+      background-color: #fc0606a7;
+    }
+
+    .avalicao {
+      display: flex;
+      flex-direction: column;
+      margin: 8px;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      border-radius: px;
+    }
+
+    #header-avaliacao {
+      background-color: #e72626;
+      border-radius: 2px;
+      font-size: calc(0.8rem + 4vmin);
+      text-align: center;
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.2;
+      color: white;
+    }
+
+    .nome-estrela h4 {
+      margin-top: 5px;
+      font-weight: 500;
+    }
+
+    .avalicao img {
+      padding: 10px;
+      height: 7rem;
+    }
+
+    .conteudo {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 20px;
+    }
+
+    .texto {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .texto h3 {
+      border-bottom: 1.2px solid rgba(14, 14, 14, 0.2);
+      padding-bottom: 8px;
+    }
+
+    .nome-estrela {
+      display: flex;
+      flex-direction: row;
+      padding-top: 18px;
+      margin-right: 8px;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .total {
+      display: flex;
+      color: red;
+      margin-right: 8px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    /* Estilos para as estrelas de avaliação */
+    .rate {
+      float: left;
+      height: 46px;
+      padding: 0 10px;
+    }
+
+    .rate:not(:checked)>input {
+      position: absolute;
+      top: -9999px;
+    }
+
+    .rate:not(:checked)>label {
+      float: right;
+      width: 1em;
+      overflow: hidden;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: 30px;
+      color: #ccc;
+    }
+
+    .rate:not(:checked)>label:before {
+      content: '★ ';
+    }
+
+    .rate>input:checked~label {
+      color: #ffc700;
+    }
+  </style>
+  <!--  CSS -->
+
+  <title>CRUD</title>
+</head>
+
+<body>
+  <!-- Navegação -->
+  <div class="container">
+    <div class="head">
+      <header class="header">
+        <nav class="navigation">
+          <a href="/gerenciamento" class="logo">Pizzaria IndoAli</a>
+        </nav>
+      </header>
+    </div>
+
+    <div class="parallax-photo">
+      <div class="parallax-wrapper">
+        <div class="hero-parallax-content">
+
+          <!-- Imagem da Pizza -->
+          <img src="https://i.im.ge/2023/09/28/N6TT8J.indo.jpg" alt="indo" alt="Pizza">
+
+          <!-- Titulo e Botões -->
+          <div class="title-and-button">
+            <h1>Pizzaria IndoAli</h1>
+
+            <!-- Botão 1 -->
+            <div class="btn-fixed-button">
+              <div class="btn">
+                <a href="/cardapios " class="button">Faça seu pedido</a>
+              </div>
+
+              <!-- Botão 2 -->
+              <div class="btn2">
+                <a href="#" class="button2" id="abrirTabelaBtn">Faça sua reserva</a>
+              </div>
+            </div>
+          </div> <!--Fim do Titulo e Botões-->
+        </div>
+
+
+        <dialog  class="modal" id="janela"><!-- Janela da Tabela -->
+
+          <div class="cont"> <!-- Inicio do Cont(conteúdo) -->
+
+            <div class="hcontainer"> <!-- Cabeçalho da Reserva de mesas -->
+              <h1>Reserva de Mesas</h1>
+            </div>
+
+
+            <div class="table-container"> <!-- Tabela das mesas -->
+              <table class="tabela-reservas">
+
+                <!-- Mesas 1-5 -->
+                <tr>
+                  <td>
+                    <div class="table-icon" data-table="1" onclick="selecionarMesa(1)">1</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="2" onclick="selecionarMesa(2)">2</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="3" onclick="selecionarMesa(3)">3</div>
+                  </td>
+                  <td>
+                    <div class="table-icon"  data-table="4" onclick="selecionarMesa(4)">4</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="5" onclick="selecionarMesa(5)">5</div>
+                  </td>
+                </tr>
+
+                <!-- Mesas 6-10 -->
+                <tr>
+                  <td>
+                    <div class="table-icon"  data-table="6" onclick="selecionarMesa(6)">6</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="7" onclick="selecionarMesa(7)">7</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="8" onclick="selecionarMesa(8)">8</div>
+                  </td>
+                  <td>
+                    <div class="table-icon"  data-table="9" onclick="selecionarMesa(9)">9</div>
+                  </td>
+                  <td>
+                    <div class="table-icon"  data-table="10" onclick="selecionarMesa(10)">10</div>
+                  </td>
+                </tr>
+
+                <!-- Mesas 11-15 -->
+                <tr>
+                  <td>
+                    <div class="table-icon"  data-table="11" onclick="selecionarMesa(11)">11</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="12" onclick="selecionarMesa(12)">12</div>
+                  </td>
+                  <td>
+                    <div class="table-icon"  data-table="13" onclick="selecionarMesa(13)">13</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="14" onclick="selecionarMesa(14)">14</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="15" onclick="selecionarMesa(15)">15</div>
+                  </td>
+                </tr>
+
+                <!-- Mesas 16-20 -->
+                <tr>
+                  <td>
+                    <div class="table-icon" data-table="16" onclick="selecionarMesa(16)">16</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="17" onclick="selecionarMesa(17)">17</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="18" onclick="selecionarMesa(18)">18</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="19" onclick="selecionarMesa(19)">19</div>
+                  </td>
+                  <td>
+                    <div class="table-icon" data-table="20" onclick="selecionarMesa(20)">20</div>
+                  </td>
+                </tr>
+              </table> <!-- Fim da Tabela -->
+
+              <div class="botao-reservar">
+                <button class="dialog-button" id="botao">Reservar</button>
+            </div>
+                <!-- Botão Reservar da Tabela -->
+                <!-- Fim da Janela da Tabelas -->
+              </div>
+            </div>
+          </div>
+          <dialog class="formulario" id="janelaFormulario">
+            <form action="/save" method="POST" onsubmit="return enviarReserva()">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+        
+                <label for="telefone">Número de Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required>
+        
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+        
+                <!-- Incluir um campo oculto para enviar o número da mesa selecionada -->
+                <input type="hidden" id="numeroMesa" name="numeroMesa" value="">
+        
+                <div class="botao-reservar">
+                    <button class="dialog-button" id="enviarBtn">Enviar</button>
+                </div>
+            </form>
+        </dialog>
+    
+        <dialog  class="sucesso" id="janelaSucesso">
+            <i class="fas fa-check-circle fa-10x" id="icone"></i>
+            <h1 id="mensagemSucesso"></h1>
+            <div class="botao-reservar">
+                <button class="dialog-button" id="fecharSucessoBtn" onclick="fecharSucesso()">Fechar</button>
+            </div>
+        </dialog>
+    
+        </dialog> <!--Fim das janelas-->
+
+        <!-- Conteúdo Principal -->
+
+        <div class="main-content">
+          <h2>Sabor que Viaja com Você</h2>
+          <br>
+          <p>Bem-vindo à Pizzaria Indo Ali, onde a paixão pela pizza se une à conveniência e à qualidade.
+            Nossa
+            jornada começou com um simples desejo: levar o delicioso sabor da pizza diretamente até você,
+            não
+            importa para onde você esteja indo. É por isso que somos mais do que uma pizzaria comum - somos
+            uma
+            experiência gastronômica que viaja com você!</p>
+          <br>
+          <p>Em cada pedaço de pizza que preparamos, colocamos nosso coração e alma. Usamos apenas os melhores
+            ingredientes frescos, uma massa cuidadosamente elaborada e uma seleção irresistível de
+            coberturas.
+            Seja você um amante da clássica Margherita, um aventureiro que adora uma pizza exótica ou alguém
+            que
+            prefere criar sua própria obra-prima, na Pizzaria Indo Ali, você encontrará algo para satisfazer
+            seu
+            paladar.</p>
+          <br>
+          <p>O que nos diferencia? Além de nossas pizzas deliciosas, oferecemos uma experiência única de
+            entrega.
+            Quer você esteja em casa, no trabalho ou em um piquenique no parque, nós estaremos indo ali para
+            te
+            servir. Com nosso serviço de entrega rápido e confiável, você nunca mais precisará abrir mão do
+            sabor em nome da conveniência.</p>
+          <br>
+          <p>Então, da próxima vez que sentir aquela fome por uma pizza incrível, não pense duas vezes -
+            escolha a
+            Pizzaria Indo Ali e deixe-nos levar o sabor até você. Estamos prontos para fazer sua jornada
+            gastronômica ser ainda mais deliciosa. Bon appétit!</p>
+
+        </div><!-- Fim do Conteúdo Principal -->
+
+      </div><!-- Fim do parallax-wrapper-->
+    </div><!-- Fim do parallax-->
+
+  </div> <!-- Fim do Container -->
+  <div class="container-avaliacao" id="avaliacoes">
+    <h2 id="header-avaliacao">Avaliações de Clientes</h2>
+    <div class="avalicao">
+      <div class="conteudo">
+        <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="Calabresa">
+        <div class="texto">
+          <div class="nome-estrela">
+            <div>
+              <h2> Smurfe Catch</h2>
+              <h4>Ótima pizzaria recomendo!</h2>
+            </div>
+            <div class="rate rate-1">
+              <input type="radio" id="star5-1" name="rate-1" value="5" checked disabled />
+              <label for="star5-1" title="text">5 stars</label>
+              <input type="radio" id="star4-1" name="rate-1" value="4" disabled />
+              <label for="star4-1" title="text">4 stars</label>
+              <input type="radio" id="star3-1" name="rate-1" value="3" disabled />
+              <label for="star3-1" title="text">3 stars</label>
+              <input type="radio" id="star2-1" name="rate-1" value="2" disabled />
+              <label for="star2-1" title="text">2 stars</label>
+              <input type="radio" id="star1-1" name="rate-1" value="1" disabled />
+              <label for="star1-1" title="text">1 star</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="avalicao">
+      <div class="conteudo">
+        <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="Calabresa">
+        <div class="texto">
+          <div class="nome-estrela">
+            <div>
+              <h2> Markus Henrique</h2>
+              <h4>O atendimento é bom!</h2>
+            </div>
+            <div class="rate rate-2">
+              <input type="radio" id="star5-2" name="rate-2" value="5" disabled />
+              <label for="star5-2" title="text">5 stars</label>
+              <input type="radio" id="star4-2" name="rate-2" value="4" checked disabled />
+              <label for="star4-2" title="text">4 stars</label>
+              <input type="radio" id="star3-2" name="rate-2" value="3" disabled />
+              <label for="star3-2" title="text">3 stars</label>
+              <input type="radio" id="star2-2" name="rate-2" value="2" disabled />
+              <label for="star2-2" title="text">2 stars</label>
+              <input type="radio" id="star1-2" name="rate-2" value="1" disabled />
+              <label for="star1-2" title="text">1 star</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="avalicao">
+      <div class="conteudo">
+        <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="Calabresa">
+        <div class="texto">
+          <div class="nome-estrela">
+            <div>
+              <h2> George Lucas</h2>
+              <h4>Sem dúvidas é uma das pizzarias já feitas!</h2>
+            </div>
+            <div class="rate rate-3">
+              <input type="radio" id="star5-3" name="rate-3" value="5" checked disabled />
+              <label for="star5-3" title="text">5 stars</label>
+              <input type="radio" id="star4-3" name="rate-3" value="4" disabled />
+              <label for="star4-3" title="text">4 stars</label>
+              <input type="radio" id="star3-3" name="rate-3" value="3" disabled />
+              <label for="star3-3" title="text">3 stars</label>
+              <input type="radio" id="star2-3" name="rate-3" value="2" disabled />
+              <label for="star2-3" title="text">2 stars</label>
+              <input type="radio" id="star1-3" name="rate-3" value="1" disabled />
+              <label for="star1-3" title="text">1 star</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="avalicao">
+      <div class="conteudo">
+        <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="Calabresa">
+        <div class="texto">
+          <div class="nome-estrela">
+            <div>
+              <h2> Paulo Vitor</h2>
+              <h4> Até que da pra comer</h4>
+            </div>
+            <div class="rate rate-4">
+              <input type="radio" id="star5-4" name="rate-4" value="5" checked disabled />
+              <label for="star5-4" title="text">5 stars</label>
+              <input type="radio" id="star4-4" name="rate-4" value="4" checked disabled />
+              <label for="star4-4" title="text">4 stars</label>
+              <input type="radio" id="star3-4" name="rate-4" value="3" disabled />
+              <label for="star3-4" title="text">3 stars</label>
+              <input type="radio" id="star2-4" name="rate-4" value="2" disabled />
+              <label for="star2-4" title="text">2 stars</label>
+              <input type="radio" id="star1-4" name="rate-4" value="1" disabled />
+              <label for="star1-4" title="text">1 star</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+</body>
+
+<script>
+      // Variável para armazenar o número da mesa selecionada
+      let mesaSelecionada = "";
+
+
+
+// Função para selecionar uma mesa
+
+function selecionarMesa(numeroMesa) {
+    mesaSelecionada = numeroMesa;
+    
+    // Destacar visualmente a mesa selecionada
+    const mesas = document.querySelectorAll(".table-icon");
+    mesas.forEach(mesa => mesa.classList.remove("selected"));
+    document.querySelector(`[data-table="${numeroMesa}"]`).classList.add("selected");
+
+    // Atualizar o valor do campo oculto "numeroMesa" no formulário
+    const numeroMesaInput = document.getElementById("numeroMesa");
+    numeroMesaInput.value = numeroMesa;
+}
+
+
+
+
+// Função para enviar a reserva
+function enviarReserva() {
+    const nome = document.getElementById("nome").value;
+    const telefone = document.getElementById("telefone").value;
+    const email = document.getElementById("email").value;
+
+    exibirMensagemSucesso(nome, mesaSelecionada, telefone, email);
+
+    return false;
+}
+
+// Função para exibir a mensagem de sucesso
+function exibirMensagemSucesso(nome, numeroMesa, telefone, email) {
+    const mensagemSucesso = document.getElementById("mensagemSucesso");
+    mensagemSucesso.textContent = `Sua mesa n° ${numeroMesa} foi reservada com sucesso, ${nome}. \nCaso seja necessário, entraremos em contato com o número de telefone: ${telefone} e e-mail: ${email}.`;
+    mensagemSucesso.style.fontSize = '20px';
+    mensagemSucesso.style.textAlign = 'justify';
+
+    // Exibir a janela de sucesso
+    const janelaSucesso = document.getElementById("janelaSucesso");
+    janelaSucesso.showModal();
+}
+
+// Função para fechar a janela de sucesso
+
+
+// Janela da Tabela
+const botao2 = document.querySelector('.button2');
+const modal = document.querySelector(".modal");
+
+botao2.onclick = function () {
+    modal.showModal();
+}
+
+// Formulário
+const botaoReservar = document.getElementById("botao");
+const modalReserva = document.querySelector(".formulario");
+
+botaoReservar.onclick = function () {
+    modalReserva.showModal();
+}
+
+function fecharSucesso() {
+    const janelaSucesso = document.getElementById("janelaSucesso");
+    const modal = document.querySelector(".modal");
+    janelaSucesso.close();
+    modal.close();
+    modalReserva.close();
+}
+
+
+function enviarReserva() {
+    const nome = $("#nome").val();
+    const telefone = $("#telefone").val();
+    const email = $("#email").val();
+    const numeroMesa = mesaSelecionada; 
+
+    // Certifique-se de que uma mesa foi selecionada
+    if (!numeroMesa) {
+        alert("Por favor, selecione uma mesa antes de fazer a reserva.");
+        return false;
+    }
+
+    // Dados a serem enviados para o servidor
+    const dadosReserva = {
+        nome: nome,
+        telefone: telefone,
+        email: email,
+        numeroMesa: numeroMesa
+    };
+
+    // Enviar os dados para o servidor usando AJAX
+    $.ajax({
+        type: "POST",
+        url: "/save", // Substitua pela URL correta do seu servidor
+        data: dadosReserva,
+        success: function (response) {
+            // A reserva foi feita com sucesso
+            exibirMensagemSucesso(nome, numeroMesa, telefone, email);
+        },
+        error: function (error) {
+            console.error("Erro ao fazer a reserva:", error);
+        }
+    });
+
+    // Retorne false para impedir o envio real do formulário
+    return false;
+}
+
+
+
+</script>
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* Definição de fontes importadas do Google Fonts e Font Awesome */
+        @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+
+        /* Reset de estilos padrão do navegador e configurações globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        /* Estilos para o cabeçalho da página */
+        .header {
+            background-color: rgb(231, 38, 38);
+            width: 100%;
+            padding: 10px 10px;
+        }
+
+        /* Estilos para a parte superior do conteúdo */
+        .head {
+            background-color: rgb(231, 38, 38);
+            width: 100%;
+            padding: 20px 30px;
+            margin-bottom: 0px;
+            border: 0.1px solid rgb(190, 34, 34);
+        }
+
+        /* Estilos para a barra de navegação */
+        .navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Estilos para o logotipo */
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        /* Estilos para a lista de links de navegação */
+        .navigation ul {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        /* Estilos para os links de navegação */
+        .navigation ul li a {
+            color: #fff;
+            font-size: 2rem;
+        }
+
+        /* Estilos para os links de navegação quando o mouse passa por cima */
+        .navigation ul li a:hover {
+            border-bottom: 3px solid rgb(190, 34, 34);
+        }
+
+        /* Estilos para imagens dentro da barra de navegação */
+        .navigation img {
+            width: 3rem;
+        }
+
+
+        /* Estilos para o container principal */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+        }
+
+        /* Definindo variáveis CSS personalizadas */
+        :root {
+            --hero-gap: 60px;
+        }
+
+        /* Estilos globais para o corpo da página */
+        body {
+            font-family: "Lora", serif;
+            background-color: rgb(242, 246, 250);
+        }
+
+        /* Estilos para cabeçalhos h1 */
+        h1 {
+            font-size: calc(0.5rem + 8vmin);
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        /* Estilos para cabeçalhos h2 */
+        .main-content h2 {
+            font-size: 50px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Estilos para parágrafos */
+        p {
+            font-size: calc(0.8rem + 1.25vmin);
+            line-height: 1.65;
+        }
+
+
+        /* Estilos para o conteúdo principal */
+        .main-content {
+            position: relative;
+            margin: 0 auto;
+            border-radius: 10px;
+            padding: var(--hero-gap) 2rem;
+            margin-top: 16px;
+            max-width: 50%;
+            border: 2px solid rgb(235, 235, 235);
+            background-color: #fff;
+            text-align: justify;
+        }
+
+        /*Aqui*/
+        .pedido {
+            display: flex;
+            flex-direction: column;
+            margin: 8px;
+            background: #fff;
+            width: 60%;
+            border-radius: 20px;
+        }
+
+        .pedido img {
+            padding: 16px;
+            height: 13rem;
+        }
+
+        .pizza {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .tituloP {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .tituloP h4 {
+            padding-bottom: 8px;
+        }
+
+
+        .total {
+            display: flex;
+            color: red;
+            margin-right: 8px;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+
+        dialog::backdrop {
+            background-color: rgb(0 0 0 / .5);
+        }
+
+        /* Estilos para o modal (janela de diálogo) */
+        dialog {
+            margin: 0 auto;
+            border: none;
+            border-radius: .5rem;
+            box-shadow: 0 0 0 5px rgb(0 0 0 / .5);
+            width: 100%;
+            max-height: 80vh;
+            /* Defina a altura máxima desejada */
+            overflow-y: auto;
+            /* Adicione rolagem vertical conforme necessário */
+            z-index: 2;
+        }
+
+        #janela {
+            width: 100%;
+            height: 60%;
+            margin: 100px auto 0 auto;
+        }
+
+        #janela-edicao-reserva-pedidos {
+            width: 30%;
+            height: 60%;
+            margin: 100px auto 0 auto;
+        }
+
+        #janela-edicao-pedidos {
+            width: 30%;
+            height: 60%;
+            margin: 100px auto 0 auto;
+        }
+
+        #janela-edicao {
+            width: 30%;
+            height: 120%;
+            margin: 100px auto 0 auto;
+        }
+
+        /* Estilos globais para o formulário na janela de edição */
+        .formulario {
+            align-items: center;
+            background-color: #ffffff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            width: 30%;
+            height: 60%;
+            margin: 100px auto 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos para o título do formulário na janela de edição */
+        .formulario h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para rótulos de campos do formulário na janela de edição */
+        .formulario label {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        /* Estilos para campos de texto no formulário na janela de edição */
+        .formulario input[type="text"],
+        .formulario input[type="tel"],
+        .formulario input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        /* Estilos para o select na janela de edição */
+        .formulario select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        /* Estilos para o botão Enviar no formulário na janela de edição */
+        .formulario button {
+            display: flex;
+            background-color: #e72626;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            justify-content: center;
+            margin-top: 10px;
+            margin-bottom: 100px;
+        }
+
+
+        .formulario input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        /* Estilos adicionais para tornar o campo de entrada semelhante ao <select> */
+        .formulario input[type="number"] {
+            appearance: none;
+            /* Remove os estilos padrão do navegador (setas de incremento/decremento) */
+            background: url("caminho-para-o-icone-de-seta.png") no-repeat right center;
+            /* Adicione uma imagem de seta personalizada */
+            background-size: 20px;
+            /* Tamanho da imagem de seta */
+            padding-right: 10px;
+            /* Espaço à direita para a imagem de seta */
+        }
+
+        /* Estilos para o botão Enviar no formulário na janela de edição quando passa o mouse por cima */
+        .formulario button:hover {
+            background-color: #b71e1e;
+        }
+
+        /* Estilos para a tabela de pedidos */
+        .main-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        /* Estilos para as células de cabeçalho da tabela */
+        .main-content table th {
+            background-color: #f2f6fa;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        /* Estilos para as células de dados da tabela */
+        .main-content table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        /* Estilos para as células de dados da tabela com classe "total" */
+        .main-content table td.total {
+            color: red;
+        }
+
+        /* Estilos para as células de ação (editar/deletar) */
+        .main-content table td a {
+            text-decoration: none;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+
+        /* Estilos para as células de ação (editar/deletar) ao passar o mouse */
+        .main-content table td a:hover {
+            text-decoration: underline;
+        }
+
+        #janela {
+            display: flex;
+            flex-direction: column;
+            height: 120%;
+            width: 100%;
+            max-width: 400px;
+            margin: 100px auto 0 auto;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos para o título do formulário na janela modal */
+        #janela h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para rótulos de campos do formulário na janela modal */
+        #janela label {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        /* Estilos para campos de texto no formulário na janela modal */
+        #janela input[type="text"],
+        #janela input[type="tel"],
+        #janela input[type="email"],
+        #janela input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        /* Estilos para o select na janela modal */
+        #janela select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        /* Estilos para o botão Enviar no formulário na janela modal */
+        #janela button {
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            justify-content: center;
+            background-color: #e72626;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Estilos para o botão Enviar no formulário na janela modal quando passa o mouse por cima */
+        #janela button:hover {
+            background-color: #b71e1e;
+        }
+
+        .janela-edicao-pedidos {
+            display: flex;
+            width: 100%;
+        }
+
+        .deletar {
+            color: red;
+        }
+
+        /* Estilos para o rótulo "Mesa Nº" no diálogo */
+        #janela-edicao label[for="numeromesa"] {
+            display: inline-block;
+            /* Isso permite que o rótulo e o campo de entrada fiquem na mesma linha */
+            margin-right: 10px;
+            /* Espaçamento à direita para separar o rótulo do campo de entrada */
+        }
+    </style>
+    <title>Gerenciamento</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <div class="head">
+                <header class="header">
+                    <nav class="navigation">
+                        <a href="/#" class="logo">Pizzaria IndoAli</a>
+                        <ul>
+                            <li><a href="/cardapios">Cardapio</a></li>
+                            <li><a href="/#avaliacoes"><img src="" alt="">Avaliações</a></li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>
+
+
+            <div class="main-content">
+                <h2>Reservas de Mesas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Mesa Nº</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% reservas.forEach((reservaMesa)=> { %>
+                            <tr>
+                                <td>
+                                    <%= reservaMesa.numeroMesa %>
+                                </td>
+                                <td>
+                                    <%= reservaMesa.nome %>
+                                </td>
+                                <td>
+                                    <%= reservaMesa.telefone %>
+                                </td>
+                                <td>
+                                    <%= reservaMesa.email %>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0);" class="editar-link"
+                                        data-id="<%= reservaMesa.id %>">Editar</a>
+                                    <a href="/deletarMesa/<%= reservaMesa.id %>" class="deletar">Deletar</a>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+
+
+
+                <h2>Reservas de Pedidos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% reservaPedido.forEach((reservaPedido)=> { %>
+                            <tr>
+                                <td>
+                                    <%= reservaPedido.nome %>
+                                </td>
+                                <td>
+                                    <%= reservaPedido.telefone %>
+                                </td>
+                                <td>
+                                    <%= reservaPedido.endereco %>
+                                </td>
+
+                                <td>
+                                    <a href="javascript:void(0);" class="editar-link-reserva-pedidos"
+                                        data-id="<%= reservaPedido.id %>">Editar</a>
+                                    <a href="/deletarReservaPedido/<%= reservaPedido.id %>" class="deletar">Deletar</a>
+                                </td>
+                            </tr>
+                    </tbody>
+                    <% }); %>
+                </table>
+
+
+                <h2>Pedidos</h2>
+                <div class="pedido">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Pedido</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% pedido.forEach((pedido)=> { %>
+                                <tr>
+                                    <td>
+                                        <%= pedido.nome %>
+                                    </td>
+                                    <td class="preco">
+                                        <%= pedido.preco %>
+                                    </td>
+                                    <td>
+                                        <%= pedido.quantidade %>
+                                    </td>
+                                    <td>
+                                        <%= pedido.total %>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="editar-link-pedidos"
+                                            data-id="<%= pedido.id %>">Editar</a>
+                                        <a href="/deletarPedido/<%= pedido.id %>" class="deletar">Deletar</a>
+                                    </td>
+                                </tr>
+                        </tbody>
+                        <% }) %>
+                    </table>
+                </div>
+
+                <dialog class="formulario" id="janela-edicao-pedidos">
+                    <% pedido.forEach((pedido)=> { %>
+
+                        <form id="form-edicao-pedido-<%= pedido.id %>" action="/atualizarpedido/<%= pedido.id %>"
+                            method="post" data-id="<%= pedido.id %>">
+                            <label for="quantidade">Quantidade:</label>
+                            <input type="number" id="quantidade" name="quantidade" min="1" required
+                                value="<%= pedido.quantidade %>">
+                            <label for="itemPedido">Pedido:</label>
+                            
+                            <select class="itemPedidoSelect" name="nome" value="<%= pedido.nome %>">
+                                <option data-preco="29.99" <%=pedido.nome=='Pizza de Calabresa' ? "selected" : '' %>
+                                    value="Pizza de Calabresa">Pizza de Calabresa</option>
+                                <option data-preco="25.00" <%=pedido.nome=='Pizza de Quatro Queijos' ? "selected" : ''
+                                    %> value="Pizza de Quatro Queijos" >Pizza de Quatro Queijos
+                                </option>
+                                <option data-preco="31.90" <%=pedido.nome=='Pizza Portuguesa' ? "selected" : '' %>
+                                    value="Pizza Portuguesa" >Pizza Portuguesa</option>
+                                <option data-preco="39.99" <%=pedido.nome=='Pizza de Chocolate' ? "selected" : '' %>
+                                    value="Pizza de Chocolate" >Pizza de Chocolate</option>
+                                <option data-preco="12.00" <%=pedido.nome=='Coca Cola 2L' ? "selected" : '' %>
+                                    value="Coca Cola 2L" >Coca Cola 2L</option>
+                                <option data-preco="8.99" <%=pedido.nome=='Guaraná Antartica 2L' ? "selected" : '' %>
+                                    value="Guaraná Antartica 2L" >Guaraná Antartica 2L</option>
+                                <option data-preco="10.99" <%=pedido.nome=='Fanta Laranja 2L' ? "selected" : '' %>
+                                    value="Fanta Laranja 2L" >Fanta Laranja 2L</option>
+                                <option data-preco="2.50" <%=pedido.nome=='Água mineral 500ml' ? "selected" : '' %>
+                                    value="Água mineral 500ml" >Água mineral 500ml</option>
+                            </select>
+                            <label for="preco">Preço:</label>
+                            <input type="text" id="preco" name="preco" readonly value="<%= pedido.preco %>">
+                            <label for="total">Total:</label>
+                            <input type="text" id="total" name="total" readonly value="<%= pedido.total %>">
+                            <button type="submit">Salvar</button>
+                        </form>
+                        <% }); %>
+
+                </dialog>
+
+
+                <dialog class="formulario" id="janela-edicao-reserva-pedidos">
+                    <% reservaPedido.forEach((reservaPedido)=> { %>
+                        <form action="/atualizar-reservaPedido/<%= reservaPedido.id %>" method="post">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome" value="<%= reservaPedido.nome %>">
+                            <label for="telefone">Telefone:</label>
+                            <input type="text" id="telefone" name="telefone" value="<%= reservaPedido.telefone %>">
+                            <label for="endereco">Endereço:</label>
+                            <input type="text" id="endereco" name="endereco" value="<%= reservaPedido.endereco %>">
+                            <button type="submit">Salvar</button>
+                        </form>
+                        <% }); %>
+
+                </dialog>
+
+                <dialog class="formulario" id="janela-edicao">
+                    <% reservas.forEach((reservaMesa)=> { %>
+                        <form action="/atualizar-mesa/<%= reservaMesa.id %>" method="post">
+                            <label for="numeromesa">Mesa Nº:</label>
+                            <input type="text" id="numeromesa" name="numeroMesa" value="<%= reservaMesa.numeroMesa %>">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome" value="<%= reservaMesa.nome %>">
+                            <label for="telefone">Telefone:</label>
+                            <input type="text" id="telefone" name="telefone" value="<%= reservaMesa.telefone %>">
+                            <label for="email">Email:</label>
+                            <input type="text" id="email" name="email" value="<%= reservaMesa.email %>">
+                            <button class="salvarbtn" type="submit">Salvar</button>
+                        </form>
+
+                        <% }); %>
+
+                </dialog>
+            </div>
+
+
+
+        </div>
+
+
+
+
+</body>
+<script>
+   
+    document.addEventListener('DOMContentLoaded', function () {
+        const editarLinksPedidos = document.querySelectorAll('.editar-link-pedidos');
+        const janelaEdicaoPedidos = document.getElementById('janela-edicao-pedidos');
+
+        editarLinksPedidos.forEach(link => {
+            link.addEventListener('click', function () {
+                const pedidoId = this.getAttribute('data-id');
+                const formularioEdicaoPedidos = document.getElementById(`form-edicao-pedido-${pedidoId}`);
+                const totalInput = formularioEdicaoPedidos.querySelector('#total');
+                const itemPedidoSelect = formularioEdicaoPedidos.querySelector('.itemPedidoSelect'); // Use o querySelector para selecionar um único elemento
+                const precoMap = {
+                    'Pizza de Calabresa': 29.99,
+                    'Pizza de Quatro Queijos': 25.00,
+                    'Pizza Portuguesa': 31.90,
+                    'Pizza de Chocolate': 39.99,
+                    'Coca Cola 2L': 12.00,
+                    'Guaraná Antartica 2L': 8.99,
+                    'Fanta Laranja 2L': 10.99,
+                    'Água mineral 500ml': 2.50
+                };
+
+
+                itemPedidoSelect.addEventListener('change', function () {
+                    const itemSelecionado = this.value;
+                    const precoItem = precoMap[itemSelecionado];
+                    totalInput.value = (precoItem * parseInt(formularioEdicaoPedidos.querySelector('#quantidade').value)).toFixed(2);
+                    console.log('Item Selecionado:', itemSelecionado);
+                    console.log('Preço do Item:', precoItem);
+                    console.log('Quantidade:', formularioEdicaoPedidos.querySelector('#quantidade').value);
+
+                    const precoInput = formularioEdicaoPedidos.querySelector('#preco'); // Adicionamos esta linha
+                    precoInput.value = precoItem.toFixed(2); 
+                    formularioEdicaoPedidos.querySelector('[name="nome"]').value = itemSelecionado;
+                });
+
+                // Abrimos o modal
+                janelaEdicaoPedidos.showModal();
+            });
+        });
+    });
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const editarLinks = document.querySelectorAll('.editar-link');
+        const janelaEdicao = document.getElementById('janela-edicao');
+
+        // Adicione um ouvinte de evento para cada link "Editar"
+        editarLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                const reservaId = this.getAttribute('data-id');
+
+
+                janelaEdicao.showModal();
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const editarLinksReservaPedidos = document.querySelectorAll('.editar-link-reserva-pedidos');
+        const janelaEdicaoReservaPedidos = document.getElementById('janela-edicao-reserva-pedidos');
+
+        editarLinksReservaPedidos.forEach(link => {
+            link.addEventListener('click', function () {
+                const reservaPedidoId = this.getAttribute('data-id');
+
+
+                janelaEdicaoReservaPedidos.showModal();
+            });
+        });
+    });
+</script>
+
+</html>
