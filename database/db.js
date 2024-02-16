@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const url = 'mongodb+srv://banco:bancoifms@pizzaria.7bie2bx.mongodb.net/';
+const url = 'mongodb+srv://bancopizzaria:pizzaria@banco.khjjr51.mongodb.net/';
 const dbName = 'crud';
 
 mongoose.connect(url + dbName, { useNewUrlParser: true, useUnifiedTopology: true });

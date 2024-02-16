@@ -2,6 +2,7 @@
 
 npm install express 
 npm install express ejs mongodb nodemon
+npm install -g nodemon
 npm init -y
 
 # Para executar
