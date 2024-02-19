@@ -9,4 +9,7 @@ app.use(express.json());
 
 app.use('/', require('./router'));
 
-app.listen(1000, '192.168.2.88');
+
+app.listen(5000, ()=>{
+    console.log('Servidor rodando em http://localhost:5000');
+});
